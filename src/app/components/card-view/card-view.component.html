@@ -1,0 +1,14 @@
+<div class="container mat-elevation-z8">
+  <div class="spinner" *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-grid-list [cols]="breakpoint" [rowHeight]="rowHeight" gutterSize="16px" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let customer of dataSource.results">
+      <cm-customer-card [customer]="customer"></cm-customer-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-paginator *ngIf="dataSource" [length]="dataSource.info.length" [pageSize]="dataSource.info.pageSize"
+    [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

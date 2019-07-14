@@ -1,0 +1,47 @@
+.customer-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  p {
+    margin: 0px;
+  }
+
+  div {
+    padding-left: 16px;
+    flex-grow: 1;
+  }
+}
+
+agm-map {
+  height: 300px;
+  width: 100%;
+}
+
+.action-bar {
+  button {
+    font-weight: normal;
+  }
+
+  button.active-view {
+    font-weight: bold;
+  }
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-form > * {
+  width: 100%;
+}
+
+.form-read-mode > div {
+  margin-bottom: 8px;
+}

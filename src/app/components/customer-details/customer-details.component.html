@@ -1,0 +1,42 @@
+<div class="customer-details">
+  <p>
+    <img [src]="customer.picture.thumbnail" alt="{{customer.name.first}}" />
+  </p>
+  <div>
+    <form class="customer-form" [formGroup]="customerForm" *ngIf="editMode" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Name" name="name" formControlName="name" required>
+        <mat-error *ngIf="name.invalid">Please enter name</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Address" name="address" formControlName="address" required>
+        <mat-error *ngIf="address.invalid">Please enter address</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="City" name="city" formControlName="city" required>
+        <mat-error *ngIf="city.invalid">Please enter city</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="State" name="state" formControlName="state" required>
+        <mat-error *ngIf="state.invalid">Please enter state</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="customerForm.invalid">Save</button>
+        <button mat-raised-button (click)="cancel.emit()" type="button">Cancel</button>
+      </mat-card-actions>
+    </form>
+    <div *ngIf="!editMode" class="form-read-mode">
+      <div class="name">{{customer.name}}</div>
+      <div class="address">{{customer.address}}</div>
+      <div class="city">{{customer.city}}, <span class="state">{{customer.state}}</span></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+<agm-map *ngIf="!editMode" [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>

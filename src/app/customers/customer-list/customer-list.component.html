@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+    Customers
+  </h1>
+  <div class="action-bar">
+    <ul class="nav">
+      <li class="list-item">
+        <a [routerLink]="['/customers', { view: viewTypes.card }]" mat-button [ngClass]="{'active-view':viewType === viewTypes.card}">
+          <mat-icon>view_module</mat-icon>Card View
+        </a></li>
+      <li class="list-item">
+        <a [routerLink]="['/customers', { view: viewTypes.list }]" mat-button [ngClass]="{'active-view':viewType === viewTypes.list}">
+          <mat-icon>list</mat-icon>List View
+        </a></li>
+      <li class="list-item">
+        <a [routerLink]="['/customers', { view: viewTypes.map }]" mat-button [ngClass]="{'active-view':viewType === viewTypes.map}">
+          <mat-icon>location_on</mat-icon>Map View
+        </a></li>
+      <li class="list-item">
+        <button mat-button>
+          <mat-icon>add</mat-icon>New Customer
+        </button></li>
+    </ul>
+
+    <form class="filter">
+      <mat-form-field class="filter-field">
+        <input matInput type="text" placeholder="Filter" [(ngModel)]="filter" name="filter"
+          (keyup)="onFilter($event.target.value)">
+        <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="filter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <cm-card-view *ngIf="viewType === viewTypes.card" [dataSource]="customers" (pageChange)="onPageChange($event)"></cm-card-view>
+  <cm-list-view *ngIf="viewType === viewTypes.list" [dataSource]="customers" (pageChange)="onPageChange($event)"></cm-list-view>
+  <cm-map-view *ngIf="viewType === viewTypes.map"></cm-map-view>
+
+</div>

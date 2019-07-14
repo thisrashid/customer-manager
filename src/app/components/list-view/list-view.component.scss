@@ -1,0 +1,38 @@
+table {
+  width: 100%;
+}
+
+img {
+  display: flex;
+  margin: 5px;
+}
+
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+tr.mat-row {
+  height: 60px;
+}
+
+th.mat-header-cell {
+  font-weight: bold;
+}
+
+.container {
+  position: relative;
+  min-height: 200px;
+}
+
+.thumbnail-cell {
+  width: 65px;
+}

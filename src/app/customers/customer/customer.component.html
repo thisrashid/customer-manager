@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+    Customer Information
+  </h1>
+  <div class="action-bar">
+    <ul class="nav">
+      <li class="list-item">
+        <a [routerLink]="['/customer', {id: customerId, tab: tabNames.details}]" mat-button [ngClass]="{'active-view':tab === tabNames.details}">
+          <mat-icon>list</mat-icon>Customer Details
+        </a></li>
+      <li class="list-item">
+        <a [routerLink]="['/customer', {id: customerId, tab: tabNames.orders}]" mat-button [ngClass]="{'active-view':tab === tabNames.orders}">
+          <mat-icon>label</mat-icon>Customers Orders
+        </a></li>
+      <li class="list-item">
+        <a [routerLink]="['/customer', {id: customerId, tab: tabNames.edit}]" mat-button [ngClass]="{'active-view':tab === tabNames.edit}">
+          <mat-icon>edit</mat-icon>Edit Customer
+        </a></li>
+    </ul>
+  </div>
+
+  <mat-card *ngIf="customer">
+    <cm-customer-details 
+      [customer]="customer" 
+      [editMode]="tab === tabNames.edit" 
+      *ngIf="tab === tabNames.details || tab === tabNames.edit"
+      (save)="onSave($event)"
+      (cancel)="onCancel()"></cm-customer-details>
+
+    <div *ngIf="tab === tabNames.orders">
+      Customer Orders
+    </div>
+  </mat-card>
+</div>

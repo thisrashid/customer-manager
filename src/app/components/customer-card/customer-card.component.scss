@@ -1,0 +1,38 @@
+@import '../../../variables';
+
+.mat-card-content {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+
+  div {
+    padding-left: 8px;
+  }
+}
+
+.mat-card {
+  padding: 0px;
+  min-width: 270px;
+  width: 99%;
+}
+
+.mat-card-header {
+  background-color: $primary;
+  border-radius: 4px 4px 0px 0px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 16px;
+
+  a {
+    top: -8px;
+  }
+}
+
+.customer-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: row;
+}
